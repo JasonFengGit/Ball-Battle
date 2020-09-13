@@ -4,19 +4,23 @@ from time import sleep
 import sys
 import random
 
+# init the pygame frame
 pg.init()
 scr=pg.display.set_mode((600,400))
 pg.display.set_caption("ball battle")
 pg.display.set_icon(scr)
 
+# set fonts
 zt24=pg.font.SysFont('stkaiti',24)
 zt40=pg.font.SysFont('stkaiti',40)
 zt30=pg.font.SysFont('stkaiti',30)
 
+# display text given x and y
 def printtext(font,text,x,y,color):
    img=font.render(text,True,color)
    scr.blit(img,(x,y))
 
+# update and draw the panels
 def draw_p(p1_y, p2_y):
     speed = 2
     keys = pg.key.get_pressed()
@@ -36,12 +40,14 @@ def draw_p(p1_y, p2_y):
     pg.draw.rect(scr,(255,255,255),(490,p2_y,10,50),0)
     return (p1_y, p2_y)
 
+# display score zone
 def draw_socre_zone():
     pg.draw.rect(scr,(255,255,255),(0,0,80,75),0)
     pg.draw.rect(scr,(255,255,255),(0,325,80,75),0)
     pg.draw.rect(scr,(255,255,255),(520,0,80,75),0)
     pg.draw.rect(scr,(255,255,255),(520,325,80,75),0)
 
+# initialize the ball
 def init_ball(ball_speed):
     pg.draw.circle(scr,(255,255,255),(300,200), 7)
 
@@ -53,14 +59,18 @@ def init_ball(ball_speed):
         vy = random.randint(-ball_speed, ball_speed)
     return 300, 200, vx, vy
 
+# wall detection
 def in_wall(x, y):
     return (y in range(75) and x in range(80)) or (y in range(325,400) and x in range(80)) or (y in range(325,400) and x in range(520, 600)) or (y in range(75) and x in range(520, 600))
 
+# panel detection
 def in_p(x, y, p1_y, p2_y):
     if x in range(100, 110):
         return y in range(p1_y, p1_y + 50)
     elif x in range(490, 500):
         return y in range(p2_y, p2_y + 50)
+
+# update and display the ball
 def update_ball(x, y, vx, vy, p1_y, p2_y):
     x += vx
     y += vy
@@ -72,6 +82,7 @@ def update_ball(x, y, vx, vy, p1_y, p2_y):
     pg.draw.circle(scr,(255,255,255),(x, y), 7)
     return x, y, vx, vy
 
+# main game loop
 def main_loop():
     c_x, c_y = 0, 0
     p1_y, p2_y = 200, 200
@@ -82,10 +93,13 @@ def main_loop():
         if p1 >= 6 or p2 >= 6:
             break
         scr.fill((0,0,0))
+        
+        # IMPORTANT!!! wih
         for eve in pg.event.get():
             if eve.type == QUIT:
                 sys.exit()
         keys = pg.key.get_pressed()
+        
         p1_y, p2_y = draw_p(p1_y, p2_y)
         draw_socre_zone()
         printtext(zt30, "Player 1: " + str(p1), 100, 10, (255,255,255))
@@ -126,5 +140,7 @@ def main_loop():
         printtext(zt40, "Player %d WIN!!! Woooo Lololo"%(1 if p1 > p2 else 2), 130, 200, (255,255,255))
         printtext(zt30, "press R to restart", 200, 30, (255,255,255))
         pg.display.update()
+
+# run the loop
 while True: 
     main_loop()
