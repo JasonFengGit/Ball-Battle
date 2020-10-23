@@ -4,9 +4,9 @@ A classic two player game.<br>
 Please enjoy it with your friends! 
 
 ## Screenshots
-| ![Screen 1](https://www.linkpicture.com/q/in_game.png) | ![Screen 2](https://www.linkpicture.com/q/in_game2.png) |
+| ![Screen 1](https://github.com/JasonFengGit/BallBattle/raw/master/screenshots/in_game.PNG) | ![Screen 2](https://github.com/JasonFengGit/BallBattle/raw/master/screenshots/in_game2.PNG) |
 |---------------------------------------------|---------------------------------------------|
-| ![Screen 3](https://www.linkpicture.com/q/finish.png) | ![Screen 4](https://www.linkpicture.com/q/getting_point.png)|
+| ![Screen 3](https://github.com/JasonFengGit/BallBattle/raw/master/screenshots/finish.PNG) | ![Screen 4](https://github.com/JasonFengGit/BallBattle/raw/master/screenshots/getting_point.PNG)|
 ## Features
 
 - Score board to show each player's score
