@@ -1,4 +1,4 @@
-## BallBattle
+## Ball-Battle
 
 A classic two player game.<br>
 Please enjoy it with your friends! 
